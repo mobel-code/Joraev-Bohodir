@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- SEO. Titles/descriptions are also switched per language by main.js -->
+  <title>Baxodir Jo‘rayev — PhD, yuz-jag‘ jarrohi</title>
+  <meta name="description" content="PhD, highest-category physician and oral & maxillofacial surgeon. Head of the Department of Oral and Maxillofacial Surgery at CAMU International University. Publications, career and contacts.">
+  <meta name="author" content="Bakhodir Juraev">
+  <meta name="theme-color" content="#0B1B3A">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
+  <!-- Open Graph / social preview.
+       When the site has a domain, make og:image and og:url absolute (https://your-domain/...). -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Bakhodir Juraev — PhD, Oral & Maxillofacial Surgeon">
+  <meta property="og:description" content="Surgeon, researcher and educator — optimizing diagnosis and treatment of odontogenic infections and maxillofacial surgery.">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Portrait of Bakhodir Juraev">
+  <meta property="og:locale" content="uz_UZ">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="profile:first_name" content="Bakhodir">
+  <meta property="profile:last_name" content="Juraev">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Structured data: Person + Physician -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Person", "Physician"],
+    "name": "Bakhodir Nurmakhamadovich Juraev",
+    "alternateName": ["Жураев Баходир Нурмахамадович", "Jo‘rayev Baxodir Nurmaxamad o‘g‘li"],
+    "honorificSuffix": "PhD",
+    "jobTitle": "Head of the Department of Oral and Maxillofacial Surgery",
+    "medicalSpecialty": "Oral and Maxillofacial Surgery",
+    "image": "assets/portrait-cutout.png",
+    "telephone": "+998937386660",
+    "worksFor": { "@type": "CollegeOrUniversity", "name": "CAMU International University" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Bukhara State Medical Institute" },
+      { "@type": "CollegeOrUniversity", "name": "Tashkent State Dental Institute" }
+    ],
+    "knowsAbout": ["Odontogenic osteomyelitis", "Odontogenic phlegmons", "Maxillofacial surgery", "Sorption-application therapy", "Kinesiotaping"],
+    "sameAs": ["https://www.facebook.com/share/1BqZWPzV9R/", "https://t.me/drjuraev"]
+  }
+  </script>
+
+  <!-- Fonts: Source Serif 4 (headings) + Manrope (UI labels) + Inter (body); all include Latin-ext (o‘ g‘) and Cyrillic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="assets/portrait-cutout.webp" type="image/webp">
+  <!-- ?v=N: bump after editing CSS/JS so browsers fetch the new files -->
+  <link rel="stylesheet" href="css/styles.css?v=26">
+
+  <!-- Apply saved theme before paint (avoids a flash of the wrong theme) -->
+  <script>
+    /* Dark by default; a visitor's own choice (saved when they press the toggle) wins */
+    try { var t = localStorage.getItem("bj-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- Loading screen: hidden by main.js once the page has loaded (CSS hides it anyway after 6s) -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__mark">BJ</span>
+      <p class="loader__name">Joraev Bohodir Nurmuhammadovich</p>
+      <span class="loader__bar"><span></span></span>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+
+  <!-- ============================ NAVBAR ============================ -->
+  <header class="nav" id="nav">
+    <div class="nav__row">
+      <!-- Main glass bar: brand + section links -->
+      <div class="nav__glass" id="navGlass">
+        <a class="nav__brand" href="#top" aria-label="Home">
+          <span class="nav__mark" aria-hidden="true">BJ</span>
+          <span class="nav__name" data-bind="person.shortName">Bakhodir Juraev</span>
+        </a>
+
+        <nav class="nav__links" id="navLinks" aria-label="Primary">
+          <span class="nav__blob" id="navBlob" aria-hidden="true"></span>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#expertise" data-i18n="nav.expertise">Expertise</a>
+          <a href="#cases" data-i18n="nav.cases">Cases</a>
+          <a href="#career" data-i18n="nav.career">Career</a>
+          <a href="#research" data-i18n="nav.research">Research</a>
+          <a href="#publications" data-i18n="nav.publications">Publications</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+        <button class="icon-btn nav__burger" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" data-i18n-aria="menu" aria-label="Menu">
+          <span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Separate glass controls: language and theme -->
+      <div class="nav__pill nav__pill--lang">
+        <div class="lang" data-lang-switch></div>
+      </div>
+      <button class="nav__pill theme-btn" id="themeToggle" type="button" aria-label="Dark mode">
+        <span class="theme-btn__icon" aria-hidden="true">
+          <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="top">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow reveal" data-bind="person.position"></p>
+          <h1 class="hero__name reveal" data-bind="person.name"></h1>
+          <p class="hero__title reveal" data-bind="person.title"></p>
+          <p class="hero__tagline reveal" data-bind="person.tagline"></p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--gold" href="#contact" data-i18n="contactMe">Contact me</a>
+            <a class="btn btn--outline" href="#publications" data-i18n="viewPubs">View publications</a>
+          </div>
+        </div>
+
+        <div class="hero__media reveal" id="heroMedia">
+          <!-- Portrait card: soft backdrop, halo behind the head, cut-out photo -->
+          <div class="portrait">
+            <div class="portrait__frame">
+              <picture>
+                <source srcset="assets/portrait-cutout.webp" type="image/webp">
+                <img class="portrait__img" src="assets/portrait-cutout.png" width="900" height="1115" alt="" data-bind-alt="person.photoAlt" fetchpriority="high">
+              </picture>
+            </div>
+          </div>
+          <!-- Credentials sit under the photo, not on top of it -->
+          <ul class="hero__badges" id="heroBadges" aria-label="Credentials"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ STATS ============================ -->
+    <section class="stats" aria-label="Key figures">
+      <div class="container">
+        <ul class="stats__grid" id="stats"></ul>
+      </div>
+    </section>
+
+    <!-- ============================ ABOUT ============================ -->
+    <section class="section" id="about">
+      <div class="container about">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="aboutEyebrow"></p>
+          <h2 data-i18n="aboutTitle"></h2>
+        </header>
+        <div class="about__body reveal" id="aboutBody"></div>
+      </div>
+    </section>
+
+    <!-- ========================== EXPERTISE ========================== -->
+    <section class="section section--tint" id="expertise">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="expertiseEyebrow"></p>
+          <h2 data-i18n="expertiseTitle"></h2>
+        </header>
+        <div class="cards" id="expertiseCards"></div>
+      </div>
+    </section>
+
+    <!-- ====================== CLINICAL CASES ======================
+         Cards are rendered from SITE.cases in content.js -->
+    <section class="section" id="cases">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="cases.eyebrow"></p>
+          <h2 data-i18n="cases.title"></h2>
+          <p class="section__lead" data-i18n="cases.lead"></p>
+        </header>
+        <div class="cases" id="casesList"></div>
+      </div>
+    </section>
+
+    <!-- =========================== CAREER ===========================
+         Horizontal timeline. The section is tall; its inner block is sticky,
+         and vertical scrolling moves the track sideways (main.js). -->
+    <section class="career" id="career">
+      <div class="career__pin">
+        <div class="container career__head">
+          <header class="section__head reveal">
+            <p class="eyebrow" data-i18n="careerEyebrow"></p>
+            <h2 data-i18n="careerTitle"></h2>
+          </header>
+          <div class="career__now" aria-hidden="true">
+            <span class="career__now-date" id="careerNow"></span>
+            <span class="career__hint" data-i18n="careerHint"></span>
+          </div>
+        </div>
+        <div class="career__viewport" id="careerViewport">
+          <ol class="career__track" id="timeline">
+            <!-- items rendered by main.js -->
+          </ol>
+        </div>
+        <div class="container">
+          <div class="career__progress" aria-hidden="true"><span id="careerBar"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== RESEARCH ========================== -->
+    <section class="section section--tint" id="research">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="researchEyebrow"></p>
+          <h2 data-i18n="researchTitle"></h2>
+        </header>
+        <div class="research" id="researchBody"></div>
+      </div>
+    </section>
+
+    <!-- ======================== PUBLICATIONS ========================
+         Horizontal carousel: drag, swipe, arrows or the keyboard. -->
+    <section class="section" id="publications">
+      <div class="container">
+        <header class="section__head section__head--row reveal">
+          <div>
+            <p class="eyebrow" data-i18n="pubsEyebrow"></p>
+            <h2 data-i18n="pubsTitle"></h2>
+          </div>
+          <a class="btn btn--ghost btn--sm" id="pdfBtn" href="#"></a>
+        </header>
+        <div class="pubs-bar reveal">
+          <div class="filters" role="tablist" id="pubFilters"></div>
+          <div class="carousel-ctrl">
+            <span class="carousel-count" id="pubCount" aria-live="polite"></span>
+            <button class="round-btn" type="button" id="pubPrev" data-i18n-aria="prev">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="round-btn" type="button" id="pubNext" data-i18n-aria="next">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="pubs-scroller reveal" id="pubScroller" tabindex="0" aria-labelledby="pubFilters">
+        <ul class="pubs" id="pubList"></ul>
+      </div>
+      <div class="container">
+        <div class="carousel-progress" aria-hidden="true"><span id="pubBar"></span></div>
+      </div>
+    </section>
+
+    <!-- ===================== EDUCATION & AFFILIATIONS ===================== -->
+    <section class="section section--tint" id="education">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="eduEyebrow"></p>
+          <h2 data-i18n="eduTitle"></h2>
+        </header>
+        <div class="edu" id="eduBody"></div>
+      </div>
+    </section>
+
+    <!-- =========================== CONTACT =========================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="contactEyebrow"></p>
+          <h2 data-i18n="contactTitle"></h2>
+        </header>
+        <!-- One card per channel; empty values in content.js are hidden -->
+        <ul class="contact-cards" id="contactList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__id">
+        <span class="nav__mark" aria-hidden="true">BJ</span>
+        <div>
+          <strong data-bind="person.name"></strong>
+          <span data-bind="person.title"></span>
+        </div>
+      </div>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#about" data-i18n="nav.about"></a>
+        <a href="#career" data-i18n="nav.career"></a>
+        <a href="#publications" data-i18n="nav.publications"></a>
+        <a href="#contact" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="lang lang--up" data-lang-switch></div>
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 <span data-bind="person.shortName"></span>. <span data-i18n="footerRights"></span></p>
+        <a class="footer__credit" href="https://nurmuhammadov-azizbek.vercel.app" target="_blank" rel="noopener">made by Nurmuhammadov.A
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Publication details (filled by main.js) -->
+  <dialog class="pub-modal" id="pubModal" aria-labelledby="pubModalTitle">
+    <div class="pub-modal__card">
+      <div class="pub-modal__head">
+        <div class="pub__top" id="pubModalTags"></div>
+        <button class="round-btn pub-modal__close" type="button" id="pubModalClose" data-i18n-aria="details.close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <h3 class="pub-modal__title" id="pubModalTitle"></h3>
+      <dl class="pub-modal__facts" id="pubModalFacts"></dl>
+      <div class="pub-modal__actions" id="pubModalActions"></div>
+      <div class="pub-modal__nav">
+        <button class="round-btn" type="button" id="pubModalPrev" data-i18n-aria="prev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <span class="carousel-count" id="pubModalCount"></span>
+        <button class="round-btn" type="button" id="pubModalNext" data-i18n-aria="next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Custom cursor: the dot is the pointer, the ring follows it -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__dot"></span></div>
+
+  <script src="js/content.js?v=26"></script>
+  <script src="js/main.js?v=26"></script>
+</body>
+</html>
