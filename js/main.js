@@ -427,7 +427,7 @@
     const el = $("#loader");
     if (!el) return;
     const t0 = performance.now();
-    const minShow = reduceMotion ? 0 : 1400; // long enough to read the name
+    const minShow = reduceMotion ? 0 : 2500; // lets the tooth/syringe animation finish
     const hide = () => {
       const wait = Math.max(0, minShow - (performance.now() - t0));
       setTimeout(() => {
@@ -437,7 +437,7 @@
     };
     if (document.readyState === "complete") hide();
     else addEventListener("load", hide, { once: true });
-    setTimeout(hide, 5000); // never block the page for long
+    setTimeout(hide, 6000); // never block the page for long
   }
 
   /* ---------------- Career timeline (horizontal) ---------------- */

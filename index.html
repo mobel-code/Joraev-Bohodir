@@ -57,7 +57,7 @@
 
   <link rel="preload" as="image" href="assets/portrait-cutout.webp" type="image/webp">
   <!-- ?v=N: bump after editing CSS/JS so browsers fetch the new files -->
-  <link rel="stylesheet" href="css/styles.css?v=26">
+  <link rel="stylesheet" href="css/styles.css?v=27">
 
   <!-- Apply saved theme before paint (avoids a flash of the wrong theme) -->
   <script>
@@ -69,9 +69,44 @@
   <!-- Loading screen: hidden by main.js once the page has loaded (CSS hides it anyway after 6s) -->
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader__inner">
-      <span class="loader__mark">BJ</span>
+      <svg class="loader__art" viewBox="0 -30 180 160" aria-hidden="true">
+        <defs>
+          <clipPath id="toothClip"><path d="M30 8C18 8 10 18 10 32c0 14 6 22 8 34 2 14 4 34 12 34s8-22 14-28c3-3 9-3 12 0 6 6 6 28 14 28s10-20 12-34c2-12 8-20 8-34C90 18 82 8 70 8c-8 0-12 5-20 5S38 8 30 8z"/></clipPath>
+          <linearGradient id="toothFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFF4D6"/><stop offset=".55" stop-color="#E2C27A"/><stop offset="1" stop-color="#B8903C"/>
+          </linearGradient>
+        </defs>
+        <!-- tooth -->
+        <g transform="translate(20 14)">
+          <g clip-path="url(#toothClip)">
+            <g class="t-level">
+              <path class="t-wave" fill="url(#toothFill)" d="M-60 0q12.5-5 25 0t25 0 25 0 25 0 25 0 25 0 25 0 25 0V110H-60z"/>
+            </g>
+          </g>
+          <path class="t-outline" pathLength="1" d="M30 8C18 8 10 18 10 32c0 14 6 22 8 34 2 14 4 34 12 34s8-22 14-28c3-3 9-3 12 0 6 6 6 28 14 28s10-20 12-34c2-12 8-20 8-34C90 18 82 8 70 8c-8 0-12 5-20 5S38 8 30 8z"/>
+          <path class="t-shine" d="M22 34c0-9 5-15 12-16"/>
+          <g transform="translate(92 6)"><path class="t-sparkle" d="M0-9 2.2-2.2 9 0 2.2 2.2 0 9-2.2 2.2-9 0-2.2-2.2z"/></g>
+          <g transform="translate(4 50) scale(.6)"><path class="t-sparkle t-sparkle--2" d="M0-9 2.2-2.2 9 0 2.2 2.2 0 9-2.2 2.2-9 0-2.2-2.2z"/></g>
+        </g>
+        <!-- syringe -->
+        <g transform="translate(96 36) rotate(-38) scale(.9)">
+          <g class="s-body">
+            <line class="s-needle" x1="0" y1="0" x2="24" y2="0"/>
+            <rect class="s-stroke" x="24" y="-3.5" width="6" height="7" rx="1"/>
+            <rect class="s-liquid" x="31.5" y="-6.5" width="35" height="13" rx="1.5"/>
+            <rect class="s-stroke" x="30" y="-8" width="42" height="16" rx="3"/>
+            <path class="s-tick" d="M38-8v4M46-8v4M54-8v4M62-8v4"/>
+            <rect class="s-stroke" x="71" y="-13" width="3.5" height="26" rx="1.5"/>
+            <g class="s-plunger">
+              <rect x="66.5" y="-6.5" width="4" height="13" rx="1" fill="#EEF0FB"/>
+              <line x1="70.5" y1="0" x2="98" y2="0" stroke="#EEF0FB" stroke-width="2.4" stroke-linecap="round"/>
+              <rect class="s-stroke" x="98" y="-9" width="3.5" height="18" rx="1.5"/>
+            </g>
+          </g>
+        </g>
+      </svg>
       <p class="loader__name">Joraev Bohodir Nurmuhammadovich</p>
-      <span class="loader__bar"><span></span></span>
+      <span class="loader__pct"></span>
     </div>
   </div>
 
@@ -332,6 +367,6 @@
   <div class="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__dot"></span></div>
 
   <script src="js/content.js?v=26"></script>
-  <script src="js/main.js?v=26"></script>
+  <script src="js/main.js?v=27"></script>
 </body>
 </html>

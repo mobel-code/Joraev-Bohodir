@@ -398,17 +398,22 @@ strong { font-weight: 700; color: var(--text); }
   transform: scale(var(--s));
   transition: transform .45s var(--spring), box-shadow .3s var(--ease), border-color .3s;
 }
-.live.is-hover { --s: 1.03; z-index: 2; box-shadow: var(--shadow-md); border-color: rgba(201, 162, 75, .6); }
-.live::before { /* top rule */
-  content: ""; position: absolute; z-index: 3; top: -1px; left: 16px; right: 16px; height: 2px; border-radius: 2px;
-  background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease);
+.live.is-hover { --s: 1.03; z-index: 2; box-shadow: var(--shadow-md), 0 0 28px -10px rgba(201, 162, 75, .55); border-color: rgba(201, 162, 75, .22); }
+@property --beam { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.live::before { /* gold light running around the border on hover */
+  content: ""; position: absolute; inset: 0; z-index: 3; border-radius: inherit; padding: 2px; pointer-events: none;
+  background: conic-gradient(from var(--beam), transparent 0deg 150deg, rgba(201, 162, 75, .2) 220deg, var(--gold) 315deg, #FFF0C2 352deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .45s var(--ease);
 }
 .live::after { /* flat wash */
   content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
   background: rgba(201, 162, 75, .07); transform: scaleY(0); transform-origin: bottom;
   transition: transform .45s var(--ease);
 }
-.live.is-hover::before { transform: scaleX(1); }
+.live.is-hover::before { opacity: 1; animation: beam 2.6s linear infinite; }
+@keyframes beam { to { --beam: 360deg; } }
 .live.is-hover::after { transform: scaleY(1); }
 .card__icon svg, .stat__icon svg, .contact-card__ico svg, .edu-step__icon svg { transition: transform .45s var(--spring); }
 :is(.card__icon, .stat__icon, .contact-card__ico, .edu-step__icon) { transition: background-color .25s, color .25s, transform .45s var(--spring); }
@@ -919,31 +924,70 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 .footer__credit:hover svg { transform: translate(2px, -2px); }
 
 /* ============================ Loading screen ============================ */
+/* A tooth outline draws itself, a syringe slides in and injects,
+   the tooth fills with a gold wave, the syringe leaves and the tooth sparkles. */
 .loader {
   position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center;
-  background: #0A0F1A; color: #EEF0FB;
+  background: radial-gradient(60% 50% at 50% 42%, #14203A 0%, #0A0F1A 70%); color: #EEF0FB;
   transition: opacity .6s var(--ease), visibility .6s;
-  animation: loaderFailsafe 0s 6s forwards; /* if JS never runs */
+  animation: loaderFailsafe 0s 7s forwards; /* if JS never runs */
 }
 .loader.is-done { opacity: 0; visibility: hidden; }
 @keyframes loaderFailsafe { to { opacity: 0; visibility: hidden; } }
-.loader__inner { display: grid; justify-items: center; gap: 1.1rem; padding: 1.5rem; text-align: center; }
-.loader__mark {
-  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
-  background: #0B1B3A; color: var(--gold); font: 800 var(--fs-lg) var(--font-head);
-  box-shadow: inset 0 0 0 1.5px var(--gold);
-  animation: loaderPop .6s var(--spring) both;
+.loader__inner { display: grid; justify-items: center; gap: .9rem; padding: 1.5rem; text-align: center; transition: transform .6s var(--ease); }
+.loader.is-done .loader__inner { transform: translateY(-10px) scale(.97); }
+
+.loader__art { width: min(230px, 62vw); height: auto; overflow: visible; }
+.loader__art * { transform-box: view-box; }
+
+/* tooth */
+.t-outline {
+  fill: rgba(255, 255, 255, .03); stroke: var(--gold); stroke-width: 2.4; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: tDraw .8s .05s var(--ease) forwards, tGlow .7s 1.95s var(--ease) both;
 }
+.t-level { transform: translateY(108px); animation: tFill 1.05s .85s cubic-bezier(.45, 0, .3, 1) forwards; }
+.t-wave { animation: tWave 1.1s linear infinite; }
+.t-shine { fill: none; stroke: rgba(255, 255, 255, .75); stroke-width: 2.4; stroke-linecap: round; opacity: 0; animation: tShow .4s 1.85s forwards; }
+.t-sparkle { fill: #FFF3CF; transform-box: fill-box; transform-origin: center; transform: scale(0); animation: sparkle .7s 1.95s var(--spring) forwards; }
+.t-sparkle--2 { animation-delay: 2.1s; }
+
+/* syringe (drawn along +x, needle tip at the origin) */
+.s-body { animation: sIn .45s .35s var(--ease) both, sOut .4s 1.9s var(--ease) forwards; }
+.s-stroke { fill: rgba(255, 255, 255, .06); stroke: #EEF0FB; stroke-width: 1.6; stroke-linejoin: round; }
+.s-needle { stroke: #C9CEDD; stroke-width: 1.5; stroke-linecap: round; }
+.s-tick { stroke: rgba(238, 240, 251, .55); stroke-width: 1.1; }
+.s-liquid { fill: var(--gold); opacity: .85; transform-box: fill-box; transform-origin: left center; animation: sEmpty 1.05s .85s cubic-bezier(.45, 0, .3, 1) forwards; }
+.s-plunger { animation: sPush 1.05s .85s cubic-bezier(.45, 0, .3, 1) forwards; }
+
 .loader__name {
-  font: 600 clamp(1.35rem, 4.5vw, 2.4rem)/1.2 var(--font-display); letter-spacing: .01em;
-  animation: loaderUp .8s .15s var(--ease) both;
+  margin: 0; font: 600 clamp(1.3rem, 4.5vw, 2.2rem)/1.2 var(--font-display); letter-spacing: .01em;
+  animation: loaderUp .8s .2s var(--ease) both;
 }
-.loader__bar { width: min(240px, 60vw); height: 2px; border-radius: 2px; background: rgba(255, 255, 255, .12); overflow: hidden; }
-.loader__bar span { display: block; height: 100%; width: 100%; background: var(--gold); transform-origin: left; animation: loaderBar 1.3s .2s var(--ease) both; }
-@keyframes loaderPop { from { opacity: 0; transform: scale(.7); } }
+@property --pct { syntax: "<integer>"; inherits: false; initial-value: 0; }
+.loader__pct {
+  font: 700 var(--fs-xs) var(--font-head); letter-spacing: .2em; color: var(--gold);
+  counter-reset: pct var(--pct); animation: loaderUp .6s .3s var(--ease) both, pct 1.05s .85s cubic-bezier(.45, 0, .3, 1) forwards;
+}
+.loader__pct::before { content: counter(pct) "%"; }
+
+@keyframes tDraw { to { stroke-dashoffset: 0; } }
+@keyframes tFill { to { transform: translateY(4px); } }
+@keyframes tWave { to { transform: translateX(-50px); } }
+@keyframes tGlow { 50% { filter: drop-shadow(0 0 10px rgba(201, 162, 75, .8)); } }
+@keyframes sparkle { 0% { transform: scale(0) rotate(-90deg); } 60% { transform: scale(1.25) rotate(10deg); } 100% { transform: scale(1) rotate(0); } }
+@keyframes sIn { from { transform: translateX(55px); opacity: 0; } }
+@keyframes sOut { to { transform: translateX(55px); opacity: 0; } }
+@keyframes sEmpty { to { transform: scaleX(.29); } }
+@keyframes sPush { to { transform: translate(-25px, 0); } }
+@keyframes pct { to { --pct: 100; } }
+@keyframes tShow { to { opacity: 1; } }
 @keyframes loaderUp { from { opacity: 0; transform: translateY(12px); } }
-@keyframes loaderBar { from { transform: scaleX(0); } }
-.loader.is-done .loader__inner { transform: translateY(-10px); transition: transform .6s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+  .t-outline { stroke-dashoffset: 0; }
+  .t-level { transform: translateY(4px); }
+  .s-body { opacity: 0; }
+}
 .footer .lang__btn { background: var(--surface); border-color: var(--line); }
 
 /* ----------------------------- Reveal animation ----------------------------- */
@@ -980,6 +1024,14 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
   .nav__links.is-open { transform: none; opacity: 1; visibility: visible; }
   .nav__links a, .nav--tight .nav__links a { padding: .85rem 1rem; font-size: var(--fs-base); border-radius: 16px; }
   .nav__links a.is-active { background: rgba(201, 162, 75, .14); }
+  .nav__links a { opacity: 0; transform: translateY(-6px); transition: opacity .3s var(--ease), transform .4s var(--spring), color .3s, background-color .3s; }
+  .nav__links.is-open a { opacity: 1; transform: none; }
+  .nav__links.is-open a:nth-of-type(2) { transition-delay: .03s; }
+  .nav__links.is-open a:nth-of-type(3) { transition-delay: .06s; }
+  .nav__links.is-open a:nth-of-type(4) { transition-delay: .09s; }
+  .nav__links.is-open a:nth-of-type(5) { transition-delay: .12s; }
+  .nav__links.is-open a:nth-of-type(6) { transition-delay: .15s; }
+  .nav__links.is-open a:nth-of-type(7) { transition-delay: .18s; }
   .nav.is-scrolled .nav__row { width: 100%; }
 }
 
@@ -1010,13 +1062,22 @@ html.has-cursor, html.has-cursor * { cursor: none !important; }
 @media (max-width: 600px) {
   :root { --nav-h: 76px; }
   .nav { inset: 8px 0 auto; padding-inline: .6rem; }
-  .nav__glass { height: 56px; gap: .5rem; }
+  .nav__glass { gap: .5rem; padding: 0 .4rem 0 .5rem; }
   .nav__row { gap: .45rem; }
   .nav__links { width: calc(100vw - 1.2rem); }
-  .nav__pill { height: 56px; min-width: 56px; }
+  .nav__pill, .nav.is-scrolled .nav__pill { height: 52px; min-width: 52px; }
+  .nav__glass, .nav.is-scrolled .nav__glass { height: 52px; }
+  .nav__mark { width: 36px; height: 36px; }
   .nav__pill--lang { padding: 0 .1rem; }
   .nav__pill--lang .lang__btn { padding: 0 .55rem; gap: .3rem; }
-  .nav__name { display: none; }
+  /* name sits in the bar (two short lines) so the bar has no empty middle */
+  .nav__brand { min-width: 0; flex: 1; gap: .55rem; }
+  .nav__name, .nav--tight .nav__name {
+    min-width: 0; white-space: normal; font-size: .8rem; line-height: 1.12;
+    overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+  .nav__burger { margin-left: 0; }
+  .nav__pill--lang .lang__btn > svg:first-child { display: none; } /* globe icon: no room */
   .lang__btn { padding: 0 .6rem; }
   .hero__cta .btn { flex: 1 1 100%; }
   .stats__grid { gap: .7rem; }
