@@ -19,16 +19,16 @@ window.SITE = {
   /* ------------------------------------------------------------------ */
   person: {
     name: {
-      uz: "Jo‘rayev Baxodir Nurmaxamad o‘g‘li",
+      uz: "Joraev Baxodir Nurmuhammadovich",
       ru: "Жураев Баходир Нурмахамадович",
-      en: "Bakhodir Nurmakhamadovich Juraev",
+      en: "Joraev Baxodir Nurmuhammadovich",
     },
-    shortName: { uz: "Baxodir Jo‘rayev", ru: "Баходир Жураев", en: "Bakhodir Juraev" },
+    shortName: { uz: "Baxodir Joraev", ru: "Баходир Жураев", en: "Baxodir Joraev" },
     initials: "BJ",
     photoAlt: {
-      uz: "Baxodir Jo‘rayevning portreti",
+      uz: "Baxodir Joraevning portreti",
       ru: "Портрет Баходира Жураева",
-      en: "Portrait of Bakhodir Juraev",
+      en: "Portrait of Baxodir Joraev",
     },
     title: {
       uz: "PhD · Og‘iz bo‘shlig‘i va yuz-jag‘ jarrohi",
@@ -75,7 +75,7 @@ window.SITE = {
     uz: {
       langName: "O‘zbekcha",
       language: "Til",
-      metaTitle: "Baxodir Jo‘rayev — PhD, yuz-jag‘ jarrohi",
+      metaTitle: "Baxodir Joraev — PhD, yuz-jag‘ jarrohi",
       metaDescription: "PhD, oliy toifali shifokor, yuz-jag‘ jarrohi. CAMU xalqaro universiteti «Og‘iz bo‘shlig‘i va yuz-jag‘ jarrohligi» kafedrasi mudiri. Ilmiy ishlar, faoliyat va aloqa.",
       nav: { about: "Men haqimda", expertise: "Yo‘nalishlar", cases: "Amaliyot", career: "Faoliyat", research: "Tadqiqot", publications: "Ilmiy ishlar", contact: "Aloqa" },
       skip: "Asosiy mazmunga o‘tish",
@@ -189,7 +189,7 @@ window.SITE = {
     en: {
       langName: "English",
       language: "Language",
-      metaTitle: "Bakhodir Juraev — PhD, Oral & Maxillofacial Surgeon",
+      metaTitle: "Baxodir Joraev — PhD, Oral & Maxillofacial Surgeon",
       metaDescription: "PhD, highest-category physician and oral & maxillofacial surgeon. Head of the Department of Oral and Maxillofacial Surgery at CAMU International University. Publications, career and contacts.",
       nav: { about: "About", expertise: "Expertise", cases: "Practice", career: "Career", research: "Research", publications: "Papers", contact: "Contact" },
       skip: "Skip to content",
