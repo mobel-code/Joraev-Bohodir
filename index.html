@@ -12,12 +12,15 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/favicon.svg">
 
-  <!-- Open Graph / social preview.
-       When the site has a domain, make og:image and og:url absolute (https://your-domain/...). -->
+  <!-- Open Graph / social preview (absolute URLs: Telegram/Facebook need them).
+       After changing og-image.jpg bump ?v= so messengers fetch the new picture. -->
   <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://joraev-bohodir.vercel.app/">
+  <meta property="og:site_name" content="Baxodir Joraev">
   <meta property="og:title" content="Baxodir Joraev — PhD, Oral & Maxillofacial Surgeon">
   <meta property="og:description" content="Surgeon, researcher and educator — optimizing diagnosis and treatment of odontogenic infections and maxillofacial surgery.">
-  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:image" content="https://joraev-bohodir.vercel.app/assets/og-image.jpg?v=2">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Portrait of Baxodir Joraev">
@@ -27,6 +30,7 @@
   <meta property="profile:first_name" content="Baxodir">
   <meta property="profile:last_name" content="Joraev">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://joraev-bohodir.vercel.app/assets/og-image.jpg?v=2">
 
   <!-- Structured data: Person + Physician -->
   <script type="application/ld+json">
