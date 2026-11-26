@@ -19,9 +19,9 @@ window.SITE = {
   /* ------------------------------------------------------------------ */
   person: {
     name: {
-      uz: "Joraev Baxodir Nurmuhammadovich",
+      uz: "Joraev Baxodir Nurmahamadovich",
       ru: "Жураев Баходир Нурмахамадович",
-      en: "Joraev Baxodir Nurmuhammadovich",
+      en: "Joraev Baxodir Nurmahamadovich",
     },
     shortName: { uz: "Baxodir Joraev", ru: "Баходир Жураев", en: "Baxodir Joraev" },
     initials: "BJ",
